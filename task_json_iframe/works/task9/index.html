@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <input id="input_a" placeholder="Enter A" />
+        <input id="input_b" placeholder="Enter B" />
+        <button onclick="calculate()";>calculate sum</button>
+        <br><br>
+        <div id="demo_div">The sum is:<span id="output_span"></span></div>
+
+
+        <div id="demo_div"></div>
+
+        <script>
+            function calculate(){
+                let a =parseInt(document.getElementById("input_a").value);
+                let b =parseInt(document.getElementById("input_b").value);
+               
+                let sum=0;
+                let i=a;
+                while(i <=b){
+                    sum +=i;
+                    i++;
+                }
+                document.getElementById("output_span").innerHTML=sum;
+
+
+            }
+        </script>
+    </body>
+</html>

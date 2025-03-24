@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Student Information</title>
+    <style>
+        *
+        {
+            background-color: antiquewhite;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input {
+            margin: 5px;
+            padding: 8px;
+        }
+        button {
+            padding: 10px;
+            background-color: rgb(232, 170, 108);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color:chocolate;
+        }
+        #output {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Student Details</h2>
+    <input type="text" id="student_name" placeholder="Enter Name">
+    <input type="number" id="student_age" placeholder="Enter Age">
+    <input type="text" id="student_major" placeholder="Enter Major">
+    <input type="text" id="student_course" placeholder="Enter Course">
+    <button onclick="save()">Save Info</button>
+    <button onclick="display()">Show Info</button>
+
+    <div id="result"></div>
+
+    <script>
+        let student = {};
+
+        function save() {
+            student.name = document.getElementById("student_name").value;
+            student.age = document.getElementById("student_age").value;
+            student.major = document.getElementById("student_major").value;
+            student.course = document.getElementById("student_course").value;
+            alert("Information Saved!");
+        }
+
+        function display() {
+            if (student.name) {
+                document.getElementById("result").innerHTML = 
+                   `Name: ${student.name} <br> Age: ${student.age} <br> Major: ${student.major} <br> Course: ${student.course}`
+            } else {
+                document.getElementById("result").innerHTML = "No information available. Please enter data first.";
+            }
+        }
+    </script>
+</body>
+</html>

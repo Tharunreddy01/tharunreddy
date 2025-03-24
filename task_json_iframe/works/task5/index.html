@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function update(){
+    let txt = document.getElementById("input").value;
+
+    let output = txt.toUpperCase();
+    document.getElementById("output").value = output;
+}
+        </script>
+    </head>
+
+    <body>
+            <div class="input_div">
+                <input placeholder="Enter some text here" id = "input"onkeyup="update()"/>
+                <input placeholder="Output will appear here" id="output" disabled/>
+            </div>          
+    </body>
+</html>

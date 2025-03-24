@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <script>
+       function generateNum() {
+ let min = parseInt(document.getElementById("min_range").value);
+ let max = parseInt(document.getElementById("max_range").value);
+ let random = Math.floor(Math.random() * (max - min + 1)) + min;
+ document.getElementById("output_div").innerHTML = `<strong>Generated Random 
+Number is: ${random}</strong>`;
+}
+function clear_html(){
+ document.getElementById("container").style.display = "None";
+}
+function unclear_html(){
+ document.getElementById("container").style.display = "Unset";
+}
+setInterval(clear_html, 3000);
+setTimeout(unclear_html, 5000);
+    </script>
+    <body>
+        <div id="container">
+            <input type="text" id="min_range" placeholder="Enter min range">
+            <input type="text" id="max_range" placeholder="Enter max range">
+            <br><br>
+            <button onclick="generateNum();">Generate Random Number</button>
+        </div>
+        <div id="output_div"></div>
+    </body>
+</html>

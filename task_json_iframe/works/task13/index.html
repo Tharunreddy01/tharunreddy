@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <style>
+        /* Basic Styling for Body */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc; /* Light background color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container Styling */
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        /* Heading Styling */
+        h1 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Input Field Styling */
+        input[type="date"] {
+            padding: 10px;
+            width: 80%;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        input[type="date"]:focus {
+            border-color: #007bff;
+        }
+
+        /* Button Styling */
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Result Styling */
+        #result {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Age Calculator</h1>
+        <input type="date" id="agecal" required>
+        <button onclick="calculateAge()">Calculate Age</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        // Constructor function for Age Calculator
+        function AgeCalculator(birthDate) {
+            this.birthDate = new Date(birthDate);
+
+            // Method to calculate age
+            this.calculateAge = function() {
+                const today = new Date();
+                let age = today.getFullYear() - this.birthDate.getFullYear();
+                const monthDifference = today.getMonth() - this.birthDate.getMonth();
+                
+                if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < this.birthDate.getDate())) {
+                    age--;
+                }
+
+                return age;
+            };
+        }
+
+        // Function to handle age calculation
+        function calculateAge() {
+            const agecal = document.getElementById("agecal").value;
+            
+            if (!agecal) {
+                alert("Please enter a valid date.");
+                return;
+            }
+
+            // Create an instance of the AgeCalculator object
+            const ageCalculator = new AgeCalculator(agecal);
+
+            // Get the age and display the result
+            const age = ageCalculator.calculateAge();
+            document.getElementById("result").textContent = `Your age is ${age} years old.`;
+        }
+    </script>
+</body>
+</html>

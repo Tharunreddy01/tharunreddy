@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            let taskStack = [];
+
+function addTask() {
+    let taskInput = document.getElementById("task_input");
+    let taskName = taskInput.value.trim();
+
+    if (taskName !== "") {
+        taskStack.push(taskName);
+        taskInput.value = "";
+        updatePipeline();
+    }
+}
+
+function undoTask() {
+    if (taskStack.length > 0) {
+        taskStack.pop();
+        updatePipeline();
+    }
+}
+
+function updatePipeline() {
+    let pipeline = document.getElementById("task_pipeline");
+
+    if (taskStack.length > 0) {
+        // Join all tasks with an arrow separator
+        pipeline.innerHTML = taskStack.join(" → ");
+    } else {
+        // Display message when no tasks are present
+        pipeline.innerHTML = "No tasks in pipeline";
+    }
+}
+        </script>
+    </head>
+    <body>
+        <div class="task_manager">
+            <h3>Task Call Stack</h3>
+            <input placeholder="Enter Task Name" id="task_input"/>
+            <button onclick="addTask()">ADD TASK</button>
+            <button onclick="undoTask()">UNDO TASK</button>
+            <p>Current Pipeline: <span id="task_pipeline">No tasks in pipeline</span></p>
+        </div>
+    </body>
+</html>
